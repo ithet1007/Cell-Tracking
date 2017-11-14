@@ -5,8 +5,9 @@ All rights reserved.
 The code is based on NaiYan Wang, thanks to him for sharing his code
 The CNN source code comes from matlab toolbox
 single object cell tracking
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 If you reuse our codes or our dataset, please cite our paper: url = "http://www.sciencedirect.com/science/article/pii/S0262885616302001",
+
 @article{HE2017142,
 title = "Cell tracking using deep neural networks with multi-task learning",
 journal = "Image and Vision Computing",

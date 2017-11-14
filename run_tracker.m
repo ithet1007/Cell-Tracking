@@ -3,6 +3,8 @@
 %% The related work refers to Learning A Deep Compact Image Representation for Visual Tracking. (NIPS2013')
 %% All rights reserved.
 
+load cnn_model.mat  % the pre_trained offline model could download from http://legacy.machineilab.org/users/hetao/
+
 function results=run_tracker(seq, res_path, bSaveImage)
     addpath('affineUtility');
     addpath('drawUtility');
@@ -10,7 +12,7 @@ function results=run_tracker(seq, res_path, bSaveImage)
     addpath('CNN');
     addpath('util');
     rand('state',0);  randn('state',0);
-    load model0224;
+    
     if isfield(seq, 'opt')
         opt = seq.opt;
     else

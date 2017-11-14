@@ -16,10 +16,11 @@
 % doi = "https://doi.org/10.1016/j.imavis.2016.11.010",
 % author = "Tao He and Hua Mao and Jixiang Guo and Zhang Yi",
 % }
+% download dataset please go to http://legacy.machineilab.org/users/hetao/
 
 clear all
 dataPath = '.\samples\'; % the dataset
-sample_num = 80;
+sample_num = 1; %total 80 samples;
 load '.\samples\groundtruth.mat';
 threshold_ce = [10 15 20 25 30 35 40];
 %center_errors = zeros(size(threshold_ce,2),sample_num);

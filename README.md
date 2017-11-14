@@ -39,12 +39,19 @@ issn = "0262-8856",
 doi = "https://doi.org/10.1016/j.imavis.2016.11.010",
 author = "Tao He and Hua Mao and Jixiang Guo and Zhang Yi",
 }
+## dataset 
+Our dataset contains two part: offline training data and online training data. We public our datasets in our homepage url:
+http://legacy.machineilab.org/users/hetao/, you can download from my homepage.
+
+The offline dataset contains source dataset and processed dataset which is saved as 'offline_data.mat', you can download and used in our code. (ref to 'CNN/cellclassificationmain.m' for more details.)
+
+The oneline dataset contains 80 cell tracking sequences. All 80 labeled cell sequences are in "samples" directoty, the label file is samples/groundtruth.mat. In our code, we just give one example, other data could be available in my homepage.
+
+In the meantime, we still give our pre_trained cell tracking cnn model saved as 'cnn_model.mat', which could be directly used in 'run_tracker.m'.
 
 ## Code Running
-please matlab run run_MTT.m
-
-## dataset 
-All 80 labeled cell sequences are in "samples" directoty, the label file is samples/groundtruth.mat
+offline training stage : please run CNN/cellclassificationmain.m.
+online tracking stage : please run run_MTT.m. By the way, you can directly use our 'cnn_model.mat' for online tracking. 
 
 ## Network implements
 The main network setting is implemented in initMTT.m. Network training using CNN/cnntrain.m

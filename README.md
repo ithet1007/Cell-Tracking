@@ -3,9 +3,28 @@ Cell tracking using deep neural networks with multi-task learning
 
 Copyright (C) Tao He, Hua Mao, and Zhang Yi.
 All rights reserved.
-The code is based on NaiYan Wang, thanks to him for sharing his code
-The CNN source code comes from matlab toolbox
-single object cell tracking
+The code is based on NaiYan Wang, thanks to him for sharing his code.
+The CNN source code comes from matlab toolbox.
+
+# Abstract
+Cell tracking plays crucial role in biomedical and computer vision areas. As cells generally have frequent
+deformation activities and small sizes in microscope image, tracking the non-rigid and non-significant cells
+is quite difficult in practice. Traditional visual tracking methods have good performances on tracking rigid
+and significant visual objects, however, they are not suitable for cell tracking problem. In this paper, a novel
+cell tracking method is proposed by using Convolutional Neural Networks (CNNs) as well as multi-task
+learning (MTL) techniques. The CNNs learn robust cell features and MTL improves the generalization performance
+of the tracking. The proposed cell tracking method consists of a particle filter motion model, a
+multi-task learning observation model, and an optimized model update strategy. In the training procedure,
+the cell tracking is divided into an online tracking task and an accompanying classification task using the
+MTL technique. The observation model is trained by building a CNN to learn robust cell features. The tracking
+procedure is started by assigning the cell position in the first frame of a microscope image sequence. Then,
+the particle filter model is applied to produce a set of candidate bounding boxes in the subsequent frames.
+The trained observation model provides the confidence probabilities corresponding to all of the candidates
+and selects the candidate with the highest probability as the final prediction. Finally, an optimized model
+update strategy is proposed to enable the multi-task observation model for the variation of the tracked cell
+over the entire tracking procedure. The performance and robustness of the proposed method are analyzed
+by comparing with other commonly-used methods. Experimental results demonstrate that the proposed
+method has good performance to the cell tracking problem.
 
 If you reuse our codes or our dataset, please cite our paper: url = "http://www.sciencedirect.com/science/article/pii/S0262885616302001",
 

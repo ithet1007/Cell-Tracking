@@ -19,14 +19,9 @@
 % download dataset please go to http://legacy.machineilab.org/users/hetao/
 
 clear all
-dataPath = '.\samples\'; % the dataset
-sample_num = 1; %total 80 samples;
+dataPath = '.\samples\';
+sample_num = 80;
 load '.\samples\groundtruth.mat';
-threshold_ce = [10 15 20 25 30 35 40];
-%center_errors = zeros(size(threshold_ce,2),sample_num);
-center_location = zeros(1,sample_num);
-threshold_sp = [0.2 0.3 0.4 0.5 0.6 0.7 0.8];
-success_plots = zeros(size(threshold_sp,2), sample_num);
 
 for index = 1:sample_num
     title = num2str(index);
@@ -37,12 +32,8 @@ for index = 1:sample_num
     p4 = pos(4)-pos(2);
     p = [p1 p2 p3 p4 0];
     opt = struct('numsample',1000, 'affsig',[4,4,.005,.000,.001,.000]);
-    opt.maxbasis = 20;
-    opt.base_conf = zeros(1,20);
-    for i=1:opt.maxbasis 
-       opt.base_conf(:,i) = (opt.maxbasis-i+1)/(opt.maxbasis-i+1+0.25); 
-    end
-    opt.updateThres = 0.2;
+    opt.maxbasis = 10;
+    opt.updateThres = 0.8;
     opt.condenssig = 0.01;
     opt.tmplsize = [32, 32];
     opt.normalWidth = 320;
@@ -66,11 +57,5 @@ for index = 1:sample_num
     end
     seq.opt = opt;
     predicts = run_tracker(seq, '', false);
-    center_location(:,index) = get_location(results{1,index}, predicts.res, threshold_ce);
-    %center_location(:,index) = get_precision_plot(results{1,index}, predicts.res, threshold_ce);
-    %success_plots(:,index) = get_success_plot(results{1,index}, predicts.res, threshold_sp);
+
 end
-save('./results/MTT0319_center_location_MLM.mat','center_location');
-%save('MTT0319_success_errors_single_object_MLM.mat','success_plots');
-
-

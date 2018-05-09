@@ -33,7 +33,6 @@ param.conf = param.conf ./ sum(param.conf);
 if maxprob == 0 || isnan(maxprob)
     error('overflow!');
 end
-param.maxprob = maxprob;
 param.est = affparam2mat(param.param(:,maxidx));
 param.wimg = reshape(data(:,maxidx), sz);
 

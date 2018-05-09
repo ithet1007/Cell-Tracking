@@ -5,6 +5,8 @@ function net = cnnbp(net, y)
     %%  backprop deltas
 
     cellresult = net.cellresult;
+    binalresult(1,:) = cellresult(1,:);
+    binalresult(2,:) = cellresult(2,:) + cellresult(3,:);
     switch net.optfun
         case 'sigm'
             net.L = 1/2* sum(net.e(:) .^ 2) / size(net.e, 2);
@@ -60,7 +62,7 @@ function net = cnnbp(net, y)
     end
     switch net.task
         case 'main'
-            net.dffW = (net.od )*(net.fv)' / size(net.od, 2) + net.lambda.*net.ffW;
+            net.dffW = (net.od .* binalresult)*(net.fv)' / size(net.od, 2) + net.lambda.*net.ffW;
             net.dffb = mean(net.od, 2);
         case 'assist'
             net.dffW = net.od * (net.fv)' / size(net.od, 2) + net.lambda.*net.ffW;

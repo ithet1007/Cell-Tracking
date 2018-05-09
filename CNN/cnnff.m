@@ -46,14 +46,16 @@ function net = cnnff(net, x)
             end  
         case 'main'
             cellresult = net.cellresult;
+            binalresult(1,:) = cellresult(1,:);
+            binalresult(2,:) = cellresult(2,:) + cellresult(3,:);
             switch net.optfun
                 case 'sigm'
-                    net.o = sigm(cellresult.*(net.ffW * net.fv + repmat(net.ffb, 1, size(net.fv, 2))));
+                    net.o = sigm(binalresult.*(net.ffW * net.fv + repmat(net.ffb, 1, size(net.fv, 2))));
                 case 'softmax'
                     z = net.ffW * net.fv + repmat(net.ffb, 1, size(net.fv, 2));
+                    z = binalresult.*z;
                     z = exp(bsxfun(@minus, z, max(z,[],1)));
-                    net.o = bsxfun(@rdivide, z, sum(z, 1));
-                    
+                    net.o = bsxfun(@rdivide, z, sum(z, 1)); 
             end              
     end
 
